@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Supermarket.Interfaces;
 
@@ -19,14 +20,35 @@ namespace Supermarket
                 itemRules.Add(count, price);
             }
             else{
-                _rules.Add(item, new SortedDictionary<int, int>(){{count, price}});
+                var rulesComparer = new RulesComparer(); // we want to order the items by count descending, e.g. cost for 3 items will be before cost for 1 item.
+                _rules.Add(item, new SortedDictionary<int, int>(rulesComparer){{count, price}});
             }
         }
 
         public int GetPrice(string item, int scanned)
         {
-            //TODO implement
-            return 0;
+            int currentPrice = 0;
+            int itemsLeftToPrice = scanned;
+
+            if(_rules.ContainsKey(item))
+            {
+                foreach(var rule in _rules[item])
+                {
+                    var timesToApply = itemsLeftToPrice / rule.Key;
+                    currentPrice += timesToApply * rule.Value;
+                    itemsLeftToPrice -= timesToApply * rule.Key;
+                }
+            }
+            return currentPrice;
+        }
+
+        private class RulesComparer : IComparer<int>
+        {
+            public int Compare(int x, int y)
+            {
+                if(x < y) return 1;
+                else return -1;
+            }
         }
     }
 }
