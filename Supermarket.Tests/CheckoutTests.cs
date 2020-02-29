@@ -63,5 +63,23 @@ namespace Supermarket.Tests
             _pricingRulesComplex.Add("A", 10, 300);
             return _pricingRulesComplex;
         }
+
+        [Fact]
+        public void TestErrorThrownIfSingleUnitPriceMissing()
+        {
+            var checkout = new Checkout(GetTestPricingRulesWithMissingSinglePrice());
+            checkout.Scan("A"); 
+            checkout.Scan("A");
+            var pp=checkout.GetTotalPrice();
+            Assert.Throws<Exception>(() => checkout.GetTotalPrice());
+        }
+
+        private PricingRules GetTestPricingRulesWithMissingSinglePrice()
+        {
+            var _pricingRulesComplex  = new PricingRules();
+            _pricingRulesComplex.Add("A", 3, 130);
+            _pricingRulesComplex.Add("A", 10, 300);
+            return _pricingRulesComplex;
+        }
     }
 }

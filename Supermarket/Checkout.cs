@@ -38,7 +38,7 @@ namespace Supermarket
                 Console.WriteLine($"rules {_rules}");
 
                 var priceToAdd = _rules.GetPrice(itemCount.Key, itemCount.Value);
-                Console.WriteLine($"item {itemCount.Key}, count {itemCount.Value}, price {priceToAdd}");
+                //Console.WriteLine($"item {itemCount.Key}, count {itemCount.Value}, price {priceToAdd}");
                 totalPrice += priceToAdd;
             }
             return totalPrice;
