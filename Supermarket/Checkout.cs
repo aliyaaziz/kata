@@ -6,12 +6,12 @@ namespace Supermarket
 {
     public class Checkout : ICheckout
     {
-        PricingRules rules;
+        PricingRules _rules;
         List<string> _scannedItems;
 
         public Checkout(PricingRules pricingRules)
         {
-            rules = pricingRules;
+            _rules = pricingRules;
             _scannedItems = new List<string>();
         }
         public int GetTotalPrice()
@@ -35,8 +35,10 @@ namespace Supermarket
             // go through item counts and fetch the cost from pricing rules
             foreach(var itemCount in itemCounts)
             {
-                var priceToAdd = rules.GetPrice(itemCount.Key, itemCount.Value);
-                //Console.WriteLine($"item {itemCount.Key}, count {itemCount.Value}, price {priceToAdd}");
+                Console.WriteLine($"rules {_rules}");
+
+                var priceToAdd = _rules.GetPrice(itemCount.Key, itemCount.Value);
+                Console.WriteLine($"item {itemCount.Key}, count {itemCount.Value}, price {priceToAdd}");
                 totalPrice += priceToAdd;
             }
             return totalPrice;

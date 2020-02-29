@@ -39,5 +39,29 @@ namespace Supermarket.Tests
             checkout.Scan("B"); 
             Assert.Equal(175, checkout.GetTotalPrice());
         }
+
+        [Fact]
+        public void TestMultpleSpecialBuysReturnCorrectPrice()
+        {
+            var checkout = new Checkout(GetTestPricingRulesWithMultipleSpecialBuys());
+            checkout.Scan("A"); checkout.Scan("A"); 
+            checkout.Scan("A"); checkout.Scan("A"); 
+            checkout.Scan("A"); checkout.Scan("A"); 
+            checkout.Scan("A"); checkout.Scan("A"); 
+            checkout.Scan("A"); checkout.Scan("A"); 
+            checkout.Scan("A"); checkout.Scan("A");
+            checkout.Scan("A"); checkout.Scan("A");
+            checkout.Scan("A");  //15
+            Assert.Equal(530, checkout.GetTotalPrice());
+        }
+
+        private PricingRules GetTestPricingRulesWithMultipleSpecialBuys()
+        {
+            var _pricingRulesComplex  = new PricingRules();
+            _pricingRulesComplex.Add("A", 1, 50);
+            _pricingRulesComplex.Add("A", 3, 130);
+            _pricingRulesComplex.Add("A", 10, 300);
+            return _pricingRulesComplex;
+        }
     }
 }
