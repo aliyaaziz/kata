@@ -35,10 +35,7 @@ namespace Supermarket
             // go through item counts and fetch the cost from pricing rules
             foreach(var itemCount in itemCounts)
             {
-                Console.WriteLine($"rules {_rules}");
-
                 var priceToAdd = _rules.GetPrice(itemCount.Key, itemCount.Value);
-                //Console.WriteLine($"item {itemCount.Key}, count {itemCount.Value}, price {priceToAdd}");
                 totalPrice += priceToAdd;
             }
             return totalPrice;

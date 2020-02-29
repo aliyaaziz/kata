@@ -26,5 +26,18 @@ We're as interested in the process that you go through to develop the code as th
 
 If you've not done a kata before, there are some great reources on the web describing the process.
 
+# test run
+Microsoft (R) Test Execution Command Line Tool Version 16.3.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+
+A total of 1 test files matched the specified pattern.
+                                                                                                                                                                                                                 
+Test Run Successful.
+Total tests: 6
+     Passed: 6
+ Total time: 1.8754 Seconds
+
 # Acknowledgements
 Adapted from http://codekata.com/kata/kata09-back-to-the-checkout/
