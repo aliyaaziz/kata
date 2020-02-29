@@ -8,13 +8,13 @@ namespace Supermarket.Tests
         PricingRules _pricingRules;
         public CheckoutTests()
         {
-            var pricingRules = new PricingRules();
-            pricingRules.Add("A", 1, 50);
-            pricingRules.Add("A", 3, 130);
-            pricingRules.Add("B", 1, 30);
-            pricingRules.Add("B", 2, 45);
-            pricingRules.Add("C", 1, 20);
-            pricingRules.Add("D", 1, 15);
+            _pricingRules = new PricingRules();
+            _pricingRules.Add("A", 1, 50);
+            _pricingRules.Add("A", 3, 130);
+            _pricingRules.Add("B", 1, 30);
+            _pricingRules.Add("B", 2, 45);
+            _pricingRules.Add("C", 1, 20);
+            _pricingRules.Add("D", 1, 15);
         }
 
         [Fact]

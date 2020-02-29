@@ -1,4 +1,4 @@
-namespace Supermarket
+namespace Supermarket.Interfaces
 {
     public interface ICheckout
     {
