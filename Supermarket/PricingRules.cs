@@ -38,6 +38,10 @@ namespace Supermarket
                     itemsLeftToPrice -= timesToApply * rule.Key;
                 }
             }
+            if(itemsLeftToPrice > 0)
+            {
+                throw new Exception($"No price rule given for single unit of {item}");
+            }
             return currentPrice;
         }
 

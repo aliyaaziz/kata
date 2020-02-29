@@ -70,7 +70,6 @@ namespace Supermarket.Tests
             var checkout = new Checkout(GetTestPricingRulesWithMissingSinglePrice());
             checkout.Scan("A"); 
             checkout.Scan("A");
-            var pp=checkout.GetTotalPrice();
             Assert.Throws<Exception>(() => checkout.GetTotalPrice());
         }
 
